@@ -1,0 +1,198 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "abstract": "https://developer.abstract.com/vocab#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "id": "@id",
+    "type": "@type",
+    "createdAt": {
+      "@id": "schema:dateCreated",
+      "@type": "xsd:dateTime"
+    },
+    "updatedAt": {
+      "@id": "schema:dateModified",
+      "@type": "xsd:dateTime"
+    },
+    "name": "schema:name",
+    "description": "schema:description",
+    "url": "schema:url",
+    "avatarUrl": "schema:image",
+    "logoUrl": "schema:logo",
+    "username": "schema:alternateName",
+    "organizationId": "abstract:organizationId",
+    "projectId": "abstract:projectId",
+    "branchId": "abstract:branchId",
+    "fileId": "abstract:fileId",
+    "layerId": "abstract:layerId",
+    "pageId": "abstract:pageId",
+    "commitSha": "abstract:commitSha",
+    "sha": "abstract:sha",
+    "status": "abstract:status",
+    "role": "abstract:role",
+    "visibility": "abstract:visibility",
+    "sizeInBytes": {
+      "@id": "schema:contentSize",
+      "@type": "xsd:integer"
+    }
+  },
+  "@graph": [
+    {
+      "@id": "abstract:AbstractAPI",
+      "@type": "schema:WebAPI",
+      "schema:name": "Abstract API",
+      "schema:description": "The Abstract REST API provides programmatic access to design projects, branches, commits, files, collections, and component libraries managed within the Abstract platform.",
+      "schema:url": "https://developer.abstract.com",
+      "schema:documentation": "https://developer.abstract.com",
+      "schema:provider": {
+        "@id": "abstract:AbstractInc",
+        "@type": "schema:Organization",
+        "schema:name": "Abstract",
+        "schema:url": "https://www.goabstract.com"
+      },
+      "schema:termsOfService": "https://www.goabstract.com/terms",
+      "schema:endpointURL": "https://api.goabstract.com"
+    },
+    {
+      "@id": "abstract:User",
+      "@type": "schema:Person",
+      "schema:name": "User",
+      "schema:description": "An Abstract platform user account.",
+      "schema:identifier": "abstract:userId",
+      "abstract:hasProperty": [
+        { "@id": "abstract:userId" },
+        { "@id": "abstract:username" },
+        { "@id": "schema:name" },
+        { "@id": "schema:email" },
+        { "@id": "schema:image" }
+      ]
+    },
+    {
+      "@id": "abstract:Organization",
+      "@type": "schema:Organization",
+      "schema:name": "Organization",
+      "schema:description": "An Abstract organization that owns projects and manages team memberships.",
+      "abstract:hasProperty": [
+        { "@id": "abstract:organizationId" },
+        { "@id": "schema:name" },
+        { "@id": "schema:logo" }
+      ]
+    },
+    {
+      "@id": "abstract:Project",
+      "@type": "schema:CreativeWork",
+      "schema:name": "Project",
+      "schema:description": "A design project within Abstract, containing branches, files, and version history.",
+      "abstract:partOf": { "@id": "abstract:Organization" },
+      "abstract:hasProperty": [
+        { "@id": "abstract:projectId" },
+        { "@id": "schema:name" },
+        { "@id": "abstract:organizationId" },
+        { "@id": "abstract:visibility" },
+        { "@id": "schema:dateCreated" },
+        { "@id": "schema:dateModified" }
+      ]
+    },
+    {
+      "@id": "abstract:Branch",
+      "@type": "schema:CreativeWork",
+      "schema:name": "Branch",
+      "schema:description": "A branch within a project, analogous to a git branch, allowing parallel design work.",
+      "abstract:partOf": { "@id": "abstract:Project" },
+      "abstract:hasProperty": [
+        { "@id": "abstract:branchId" },
+        { "@id": "schema:name" },
+        { "@id": "abstract:projectId" },
+        { "@id": "abstract:status" }
+      ]
+    },
+    {
+      "@id": "abstract:Commit",
+      "@type": "schema:UpdateAction",
+      "schema:name": "Commit",
+      "schema:description": "A commit representing a saved set of design changes pushed to a branch.",
+      "abstract:partOf": { "@id": "abstract:Branch" },
+      "abstract:hasProperty": [
+        { "@id": "abstract:sha" },
+        { "@id": "abstract:projectId" },
+        { "@id": "schema:name" },
+        { "@id": "schema:description" },
+        { "@id": "schema:dateCreated" }
+      ]
+    },
+    {
+      "@id": "abstract:File",
+      "@type": "schema:DigitalDocument",
+      "schema:name": "File",
+      "schema:description": "A design file (e.g. a Sketch file) stored within a branch.",
+      "abstract:partOf": { "@id": "abstract:Branch" },
+      "abstract:hasProperty": [
+        { "@id": "abstract:fileId" },
+        { "@id": "schema:name" },
+        { "@id": "abstract:projectId" },
+        { "@id": "abstract:isLibrary" }
+      ]
+    },
+    {
+      "@id": "abstract:Page",
+      "@type": "schema:CreativeWork",
+      "schema:name": "Page",
+      "schema:description": "A page within a design file, containing design layers.",
+      "abstract:partOf": { "@id": "abstract:File" },
+      "abstract:hasProperty": [
+        { "@id": "abstract:pageId" },
+        { "@id": "schema:name" },
+        { "@id": "abstract:fileId" }
+      ]
+    },
+    {
+      "@id": "abstract:Collection",
+      "@type": "schema:Collection",
+      "schema:name": "Collection",
+      "schema:description": "A curated collection of design layers shared for review or presentation.",
+      "abstract:partOf": { "@id": "abstract:Branch" },
+      "abstract:hasProperty": [
+        { "@id": "abstract:collectionId" },
+        { "@id": "schema:name" },
+        { "@id": "schema:description" },
+        { "@id": "abstract:projectId" },
+        { "@id": "abstract:branchId" }
+      ]
+    },
+    {
+      "@id": "abstract:Comment",
+      "@type": "schema:Comment",
+      "schema:name": "Comment",
+      "schema:description": "A comment attached to a branch, commit, page, or layer, optionally with a positional annotation.",
+      "abstract:hasProperty": [
+        { "@id": "abstract:commentId" },
+        { "@id": "schema:text" },
+        { "@id": "abstract:userId" },
+        { "@id": "abstract:projectId" }
+      ]
+    },
+    {
+      "@id": "abstract:Webhook",
+      "@type": "schema:EntryPoint",
+      "schema:name": "Webhook",
+      "schema:description": "A webhook subscription that delivers Abstract events to an external URL.",
+      "abstract:partOf": { "@id": "abstract:Organization" },
+      "abstract:hasProperty": [
+        { "@id": "abstract:webhookId" },
+        { "@id": "schema:url" },
+        { "@id": "abstract:events" },
+        { "@id": "abstract:active" }
+      ]
+    },
+    {
+      "@id": "abstract:Membership",
+      "@type": "schema:OrganizationRole",
+      "schema:name": "Membership",
+      "schema:description": "A user's role membership within an Abstract organization or project.",
+      "abstract:hasProperty": [
+        { "@id": "abstract:userId" },
+        { "@id": "abstract:organizationId" },
+        { "@id": "abstract:role" }
+      ]
+    }
+  ]
+}

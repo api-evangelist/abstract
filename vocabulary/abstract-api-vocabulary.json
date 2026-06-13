@@ -1,0 +1,214 @@
+{
+  "vocabulary": {
+    "name": "Abstract API Vocabulary",
+    "description": "Domain vocabulary for the Abstract design version control and collaboration API.",
+    "url": "https://developer.abstract.com",
+    "version": "1.0.0",
+    "created": "2026-06-13",
+    "terms": [
+      {
+        "term": "Organization",
+        "definition": "The top-level entity in Abstract that groups projects and manages team members. An organization has a unique ID, a name, and may have logo, domain restrictions, and subscription settings.",
+        "type": "resource",
+        "relatedTerms": ["Project", "Membership", "Section", "Webhook"]
+      },
+      {
+        "term": "Project",
+        "definition": "A design project that belongs to an organization. Projects contain branches, files, and a full version history of design changes. Projects can be cloud-based or local and have visibility settings (organization-wide or specific teams).",
+        "type": "resource",
+        "relatedTerms": ["Branch", "File", "Organization", "Section"]
+      },
+      {
+        "term": "Branch",
+        "definition": "A parallel line of design work within a project, analogous to a git branch. Branches allow designers to explore changes independently before merging them. Every project has a 'master' branch representing the source of truth.",
+        "type": "resource",
+        "relatedTerms": ["Commit", "Project", "MergeState", "BranchStatus"]
+      },
+      {
+        "term": "Commit",
+        "definition": "A saved snapshot of changes pushed to a branch. Each commit has a SHA identifier, a title, a description, and references to which files changed. Commits form the version history of a branch.",
+        "type": "resource",
+        "relatedTerms": ["Branch", "File", "Changeset", "SHA"]
+      },
+      {
+        "term": "SHA",
+        "definition": "A unique hash identifier for a specific commit, used to reference a precise point in the version history of a branch or file. The value 'latest' refers to the most recent commit.",
+        "type": "concept",
+        "relatedTerms": ["Commit", "Branch"]
+      },
+      {
+        "term": "File",
+        "definition": "A design file (typically a Sketch .sketch file) stored within a branch at a specific commit SHA. Files can be design files or shared libraries.",
+        "type": "resource",
+        "relatedTerms": ["Branch", "Page", "Layer", "Asset", "Commit"]
+      },
+      {
+        "term": "Page",
+        "definition": "A page within a design file. A file can have multiple pages, each containing design layers arranged in a canvas.",
+        "type": "resource",
+        "relatedTerms": ["File", "Layer"]
+      },
+      {
+        "term": "Layer",
+        "definition": "An individual design element within a page — such as a group, shape, text, symbol, or artboard. Layers can be inspected for design properties and exported as assets.",
+        "type": "resource",
+        "relatedTerms": ["Page", "File", "Asset", "Preview", "Data"]
+      },
+      {
+        "term": "Collection",
+        "definition": "A curated set of layers from across files and branches, assembled for review, handoff, or presentation purposes. Collections are published to share design intent with stakeholders.",
+        "type": "resource",
+        "relatedTerms": ["CollectionLayer", "Branch", "Project"]
+      },
+      {
+        "term": "CollectionLayer",
+        "definition": "A reference to a specific layer added to a collection, tracking the file, page, layer, and commit SHA of the layer. Collection layers can be pinned or set to track the latest commit.",
+        "type": "resource",
+        "relatedTerms": ["Collection", "Layer"]
+      },
+      {
+        "term": "Asset",
+        "definition": "An exported asset generated from a design layer, such as a PNG, SVG, or PDF export. Assets are associated with a layer, file, and project and can be downloaded as binary data.",
+        "type": "resource",
+        "relatedTerms": ["Layer", "File", "Project"]
+      },
+      {
+        "term": "Comment",
+        "definition": "A threaded comment that can be attached to a branch, commit, page, or specific layer position (via an annotation). Comments support design review workflows and can carry review status (REQUESTED, APPROVED, REJECTED).",
+        "type": "resource",
+        "relatedTerms": ["Annotation", "ReviewStatus", "Branch", "Layer"]
+      },
+      {
+        "term": "Annotation",
+        "definition": "A positional marker on a design layer used to attach a comment to a specific area. Annotations include x/y coordinates, width, height, and scale relative to the layer.",
+        "type": "concept",
+        "relatedTerms": ["Comment", "Layer"]
+      },
+      {
+        "term": "Changeset",
+        "definition": "A structured diff between two states of a branch or between a commit and its parent, showing which files, pages, layers, colors, text styles, and other elements were added, edited, or deleted.",
+        "type": "resource",
+        "relatedTerms": ["Commit", "Branch", "ChangesetStatus"]
+      },
+      {
+        "term": "ChangesetStatus",
+        "definition": "The status of an individual change within a changeset. Possible values: 'added', 'deleted', 'edited', 'edited-indirectly', 'none'.",
+        "type": "enumeration",
+        "values": ["added", "deleted", "edited", "edited-indirectly", "none"],
+        "relatedTerms": ["Changeset"]
+      },
+      {
+        "term": "MergeState",
+        "definition": "The merge readiness state of a branch relative to its parent. Possible values: 'CLEAN' (ready to merge), 'NEEDS_UPDATE' (needs changes from parent pulled in), 'NEEDS_REMOTE_UPDATE' (needs remote sync).",
+        "type": "enumeration",
+        "values": ["CLEAN", "NEEDS_UPDATE", "NEEDS_REMOTE_UPDATE"],
+        "relatedTerms": ["Branch"]
+      },
+      {
+        "term": "ReviewStatus",
+        "definition": "The status of a design review on a branch comment. Possible values: 'REQUESTED' (review asked for), 'APPROVED' (reviewer approved), 'REJECTED' (reviewer requested changes).",
+        "type": "enumeration",
+        "values": ["REQUESTED", "APPROVED", "REJECTED"],
+        "relatedTerms": ["Comment", "ReviewRequest"]
+      },
+      {
+        "term": "Membership",
+        "definition": "A user's association with an organization or project, including their role (guest, member, owner) and subscription role (viewer, contributor) within that context.",
+        "type": "resource",
+        "relatedTerms": ["User", "Organization", "Project", "Role"]
+      },
+      {
+        "term": "Section",
+        "definition": "A grouping mechanism for organizing projects within an organization. Sections can be starred for quick access.",
+        "type": "resource",
+        "relatedTerms": ["Organization", "Project", "Star"]
+      },
+      {
+        "term": "Star",
+        "definition": "A bookmark created by a user to mark a project or section as a favorite for quick access.",
+        "type": "resource",
+        "relatedTerms": ["Project", "Section", "User"]
+      },
+      {
+        "term": "Activity",
+        "definition": "A record of a significant event within a project or organization, such as branch creation, commits, merges, comments, or review requests. Activities form an audit trail and feed notification streams.",
+        "type": "resource",
+        "relatedTerms": ["Branch", "Commit", "Comment", "Notification"]
+      },
+      {
+        "term": "Notification",
+        "definition": "A user-facing alert generated from an activity, delivered within the Abstract platform to inform team members about events relevant to them.",
+        "type": "resource",
+        "relatedTerms": ["Activity", "User"]
+      },
+      {
+        "term": "Webhook",
+        "definition": "A subscription that delivers HTTP POST payloads to an external URL when specific Abstract events occur. Webhooks are configured at the organization level and can filter for specific event types.",
+        "type": "resource",
+        "relatedTerms": ["WebhookDelivery", "WebhookEvent", "Organization"]
+      },
+      {
+        "term": "WebhookDelivery",
+        "definition": "A record of a single attempt by Abstract to deliver a webhook payload to the configured endpoint, including the request/response headers, body, and HTTP status code.",
+        "type": "resource",
+        "relatedTerms": ["Webhook"]
+      },
+      {
+        "term": "Share",
+        "definition": "A shareable link to an Abstract resource (project, branch, file, page, layer, comment, or collection) that can be distributed to stakeholders who may or may not have an Abstract account.",
+        "type": "resource",
+        "relatedTerms": ["Project", "Branch", "File", "Layer", "Collection"]
+      },
+      {
+        "term": "Preview",
+        "definition": "A rendered image preview of a specific layer version, available as a URL or as raw binary data (e.g. PNG). Previews allow visual inspection of design states without the native application.",
+        "type": "resource",
+        "relatedTerms": ["Layer", "File"]
+      },
+      {
+        "term": "Data",
+        "definition": "The full structured design data for a layer version, including all visual properties such as fills, borders, shadows, typography, and nested layer structure.",
+        "type": "resource",
+        "relatedTerms": ["Layer", "LayerDataset"]
+      },
+      {
+        "term": "AccessToken",
+        "definition": "An OAuth access token generated through the Abstract web application, used to authenticate API requests. Tokens can be provided via the ABSTRACT_TOKEN environment variable or passed directly when initializing the SDK client.",
+        "type": "concept",
+        "relatedTerms": ["Authentication"]
+      },
+      {
+        "term": "Transport",
+        "definition": "The mechanism through which the Abstract SDK communicates with the platform — either the HTTP API transport (requests to api.goabstract.com) or the CLI transport (local command-line interface).",
+        "type": "concept",
+        "values": ["api", "cli"],
+        "relatedTerms": ["AccessToken"]
+      },
+      {
+        "term": "Cursor",
+        "definition": "A pagination mechanism for list endpoints that return large result sets. A cursor represents a position in the result set and is used to fetch the next page of results via offset-based pagination.",
+        "type": "concept",
+        "relatedTerms": ["Pagination", "ListOptions"]
+      },
+      {
+        "term": "Descriptor",
+        "definition": "A lightweight object that identifies a specific Abstract resource by its IDs. Descriptors are passed to SDK endpoint methods to specify which resource to retrieve or operate on.",
+        "type": "concept",
+        "values": [
+          "OrganizationDescriptor",
+          "ProjectDescriptor",
+          "BranchDescriptor",
+          "FileDescriptor",
+          "PageDescriptor",
+          "LayerVersionDescriptor",
+          "CollectionDescriptor",
+          "CommentDescriptor",
+          "AssetDescriptor",
+          "UserDescriptor",
+          "WebhookDescriptor"
+        ],
+        "relatedTerms": ["Resource"]
+      }
+    ]
+  }
+}

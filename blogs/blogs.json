@@ -1,0 +1,108 @@
+{
+  "name": "Abstract Blog",
+  "description": "Blog posts from the Abstract design version control and collaboration platform covering design process, DesignOps, team collaboration, and product updates.",
+  "url": "https://www.goabstract.com/blog",
+  "created": "2026-06-13",
+  "modified": "2026-06-13",
+  "posts": [
+    {
+      "title": "How to collaborate with non-designers using Abstract",
+      "url": "https://www.goabstract.com/blog/design-collaboration",
+      "author": "Alden Spence",
+      "category": "Product",
+      "description": "Feedback is key to making better products, when it is given in the right place, at the right time. Explores how Abstract enables design collaboration across teams including non-designers."
+    },
+    {
+      "title": "A guide to modern retros: how to host valuable project post-mortems",
+      "url": "https://www.goabstract.com/blog/modern-retros-valuable-post-mortems",
+      "author": "Alison Harshbarger",
+      "category": "Inspiration",
+      "readTime": "11 min",
+      "description": "GitHub's Kyle Diagle discusses how successful retrospectives depend on establishing trust among participants and building psychological safety."
+    },
+    {
+      "title": "Disney Streaming Services' Ariem Anthony on people and process",
+      "url": "https://www.goabstract.com/blog/designops-process-people",
+      "author": "Kasey Fleisher Hickey",
+      "category": "Inspiration",
+      "description": "Disney's senior design project manager emphasizes why process optimization and people-first thinking are central to DesignOps success."
+    },
+    {
+      "title": "Introducing: Reporting in Abstract",
+      "url": "https://www.goabstract.com/blog/reporting",
+      "author": "LaShaun Williams",
+      "category": "Product",
+      "description": "Announcing the Reporting feature in Abstract that surfaces activity data for identifying workflow bottlenecks and opportunities for improvement."
+    },
+    {
+      "title": "How Zendesk planted the Garden design system",
+      "url": "https://www.goabstract.com/blog/how-zendesk-planted-the-garden-design-system",
+      "author": "Andrea Burton",
+      "category": "Inspiration",
+      "readTime": "12 min",
+      "description": "An overview of the organizational decisions and design system architecture behind Zendesk's Garden design system."
+    },
+    {
+      "title": "How to lead a 100% remote design team",
+      "url": "https://www.goabstract.com/blog/lead-remote-team",
+      "author": "Hannah Shadrick",
+      "category": "Inspiration",
+      "description": "Remote design leadership requires good tools, good communication, good documentation, and plenty of empathy. Practical guidance for distributed teams."
+    },
+    {
+      "title": "Approaching the product design process through an engineering lens",
+      "url": "https://www.goabstract.com/blog/product-design-process-engineering-lens",
+      "author": "Alison Harshbarger",
+      "category": "Inspiration",
+      "readTime": "7 min",
+      "description": "Zipper's Duretti Hirpa explores the shared values between designers and engineers and how applying engineering thinking can improve the design process."
+    },
+    {
+      "title": "Making the most of stakeholder review meetings",
+      "url": "https://www.goabstract.com/blog/stakeholder-review-meetings",
+      "author": "Alison Harshbarger",
+      "category": "Inspiration",
+      "readTime": "5 min",
+      "description": "Google's Meghan Schofield shares design communication techniques for getting the most out of stakeholder review sessions."
+    },
+    {
+      "title": "Designers and product managers are better together",
+      "url": "https://www.goabstract.com/blog/designers-product-managers-better-together",
+      "author": "Alison Harshbarger",
+      "category": "Inspiration",
+      "readTime": "5 min",
+      "description": "Ellen Butters explains how strong PM-designer partnerships strengthen designers' influence on product roadmaps and business outcomes."
+    },
+    {
+      "title": "Designing winning outcomes with Mia Blume",
+      "url": "https://www.goabstract.com/blog/designing-winning-outcomes",
+      "author": "Alison Harshbarger",
+      "category": "Inspiration",
+      "readTime": "6 min",
+      "description": "Discussion on design's power to drive business results and the benefits of placing designers in executive and decision-making positions."
+    },
+    {
+      "title": "Fonz Morris answers your user research FAQs",
+      "url": "https://www.goabstract.com/blog/fonz-morris-answers-user-research-faqs",
+      "author": "Alison Harshbarger",
+      "category": "Inspiration",
+      "readTime": "7 min",
+      "description": "Netflix's Lead Product Designer shares insights on how to uncover valuable design information and run effective user research programs."
+    },
+    {
+      "title": "Design your team like you would your product",
+      "url": "https://www.goabstract.com/blog/design-team-like-your-product",
+      "author": "Alison Harshbarger",
+      "category": "Inspiration",
+      "description": "American Express VP of Product Design discusses how to approach scaling design teams strategically using the same iterative thinking applied to products."
+    },
+    {
+      "title": "Netflix's Fonz Morris on the five golden rules of product iteration",
+      "url": "https://www.goabstract.com/blog/netflix-fonz-morris-five-rules-product-iteration",
+      "author": "Alison Harshbarger",
+      "category": "Inspiration",
+      "readTime": "6 min",
+      "description": "Netflix's Fonz Morris emphasizes the importance of early-stage design refinement rather than waiting for end-of-cycle adjustments in product iteration."
+    }
+  ]
+}

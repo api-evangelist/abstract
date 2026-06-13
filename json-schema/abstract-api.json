@@ -1,0 +1,429 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/abstract/main/json-schema/abstract-api.json",
+  "title": "Abstract API Schemas",
+  "description": "JSON Schema definitions for the Abstract design version control and collaboration API.",
+  "definitions": {
+    "User": {
+      "type": "object",
+      "description": "An Abstract platform user.",
+      "properties": {
+        "id": { "type": "string" },
+        "primaryEmailId": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" },
+        "deletedAt": { "type": "string", "format": "date-time" },
+        "lastActiveAt": { "type": "string", "format": "date-time" },
+        "username": { "type": "string" },
+        "name": { "type": "string" },
+        "avatarUrl": { "type": "string", "format": "uri" }
+      },
+      "required": ["id", "username", "name"]
+    },
+    "Organization": {
+      "type": "object",
+      "description": "An Abstract organization.",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "logoUrl": { "type": "string", "format": "uri" },
+        "userId": { "type": "string" },
+        "hasBillingInfo": { "type": "boolean" },
+        "isUsernameOrganization": { "type": "boolean" },
+        "isWithinSubscriptionTerm": { "type": "boolean" },
+        "privateProjectPublicSharingEnabled": { "type": "boolean" },
+        "publicSharingEnabled": { "type": "boolean" },
+        "restrictedToDomains": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "trialEndsAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "name", "userId"]
+    },
+    "Project": {
+      "type": "object",
+      "description": "An Abstract design project.",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "about": { "type": "string" },
+        "color": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" },
+        "deletedAt": { "type": "string", "format": "date-time" },
+        "archivedAt": { "type": "string", "format": "date-time" },
+        "organizationId": { "type": "string" },
+        "createdByUser": { "$ref": "#/definitions/User" },
+        "firstPushedAt": { "type": "string", "format": "date-time" },
+        "pushedAt": { "type": "string", "format": "date-time" },
+        "isNew": { "type": "boolean" },
+        "repoCreatedAt": { "type": "string", "format": "date-time" },
+        "type": { "type": ["string", "null"], "enum": ["cloud", null] },
+        "visibility": { "type": "string", "enum": ["organization", "specific"] },
+        "sizeInBytes": { "type": "integer" },
+        "assetAutoGeneration": { "type": "string", "enum": ["all", "master", "off"] }
+      },
+      "required": ["id", "name", "organizationId"]
+    },
+    "NewProject": {
+      "type": "object",
+      "description": "Input object for creating a new project.",
+      "properties": {
+        "name": { "type": "string" },
+        "organizationId": { "type": "string" },
+        "about": { "type": "string" },
+        "color": { "type": "string" },
+        "sectionId": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "type": { "type": "string", "enum": ["cloud"] },
+        "visibility": { "type": "string", "enum": ["organization", "specific"] },
+        "assetAutoGeneration": { "type": "string", "enum": ["all", "master", "off"] }
+      },
+      "required": ["name", "organizationId"]
+    },
+    "Branch": {
+      "type": "object",
+      "description": "A branch within an Abstract project, analogous to a git branch.",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "description": { "type": "string" },
+        "userName": { "type": "string" },
+        "userId": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" },
+        "status": { "type": "string" },
+        "parent": { "type": "string" },
+        "startedAtSha": { "type": "string" },
+        "head": { "type": "string" },
+        "mergeSha": { "type": "string" },
+        "mergedIntoBranchId": { "type": "string" },
+        "divergedFromBranchId": { "type": "string" },
+        "projectId": { "type": "string" },
+        "user": { "$ref": "#/definitions/User" }
+      },
+      "required": ["id", "name", "projectId"]
+    },
+    "BranchInput": {
+      "type": "object",
+      "description": "Input object for updating a branch.",
+      "properties": {
+        "name": { "type": "string" },
+        "description": { "type": "string" },
+        "status": { "type": "string" }
+      }
+    },
+    "BranchMergeState": {
+      "type": "object",
+      "description": "The merge state of a branch.",
+      "properties": {
+        "state": { "type": "string", "enum": ["CLEAN", "NEEDS_UPDATE", "NEEDS_REMOTE_UPDATE"] },
+        "parentId": { "type": "string" },
+        "parentCommit": { "type": "string" },
+        "branchId": { "type": "string" },
+        "branchCommit": { "type": "string" },
+        "ahead": { "type": "integer" },
+        "behind": { "type": "integer" }
+      },
+      "required": ["state"]
+    },
+    "Commit": {
+      "type": "object",
+      "description": "A commit representing a set of changes pushed to a branch.",
+      "properties": {
+        "sha": { "type": "string" },
+        "projectId": { "type": "string" },
+        "type": {
+          "type": "string",
+          "enum": [
+            "PROJECT_CREATED", "FILE_ADDED", "FILE_RENAMED", "FILE_DELETED",
+            "FILE_REPLACED", "FILE_UPGRADED", "LIBRARY_ADDED", "LIBRARY_REMOVED",
+            "RESTORE", "UPDATE", "MERGE", "NORMAL"
+          ]
+        },
+        "time": { "type": "string", "format": "date-time" },
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "userName": { "type": "string" },
+        "userId": { "type": "string" },
+        "fileIds": { "type": "array", "items": { "type": "string" } },
+        "parents": { "type": "array", "items": { "type": "string" } },
+        "destinationBranchId": { "type": "string" },
+        "destinationBranchName": { "type": "string" },
+        "sourceBranchId": { "type": "string" },
+        "sourceBranchName": { "type": "string" }
+      },
+      "required": ["sha", "projectId", "type", "time", "title"]
+    },
+    "File": {
+      "type": "object",
+      "description": "A design file (e.g. Sketch file) within a branch.",
+      "properties": {
+        "applicationDocumentVersion": { "type": "integer" },
+        "applicationVersion": { "type": "string" },
+        "id": { "type": "string" },
+        "isLibrary": { "type": "boolean" },
+        "lastChangedAtSha": { "type": "string" },
+        "name": { "type": "string" },
+        "projectId": { "type": "string" },
+        "sha": { "type": "string" },
+        "type": { "type": "string" }
+      },
+      "required": ["id", "name", "projectId"]
+    },
+    "Page": {
+      "type": "object",
+      "description": "A page within a design file.",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "type": { "type": "string" },
+        "order": { "type": "integer" },
+        "fileId": { "type": "string" },
+        "projectId": { "type": "string" }
+      },
+      "required": ["id", "name", "fileId"]
+    },
+    "Collection": {
+      "type": "object",
+      "description": "A curated collection of design layers.",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "projectId": { "type": "string" },
+        "branchId": { "type": "string" },
+        "name": { "type": "string" },
+        "description": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "publishedAt": { "type": "string", "format": "date-time" },
+        "layers": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/CollectionLayer" }
+        }
+      },
+      "required": ["id", "name", "projectId", "branchId"]
+    },
+    "NewCollection": {
+      "type": "object",
+      "description": "Input object for creating a new collection.",
+      "properties": {
+        "name": { "type": "string" },
+        "branchId": { "type": "string" },
+        "description": { "type": "string" },
+        "published": { "type": "boolean" }
+      },
+      "required": ["name", "branchId"]
+    },
+    "UpdatedCollection": {
+      "type": "object",
+      "description": "Input object for updating a collection.",
+      "properties": {
+        "name": { "type": "string" },
+        "description": { "type": "string" },
+        "published": { "type": "boolean" }
+      }
+    },
+    "CollectionLayer": {
+      "type": "object",
+      "description": "A layer within a collection.",
+      "properties": {
+        "collectionId": { "type": "string" },
+        "fileId": { "type": "string" },
+        "id": { "type": "string" },
+        "isPinned": { "type": "boolean" },
+        "layerId": { "type": "string" },
+        "order": { "type": "integer" },
+        "pageId": { "type": "string" },
+        "projectId": { "type": "string" },
+        "sha": { "type": "string" },
+        "useLatestCommit": { "type": "boolean" }
+      },
+      "required": ["id", "collectionId", "fileId", "layerId", "pageId"]
+    },
+    "NewCollectionLayer": {
+      "type": "object",
+      "description": "Input object for adding a layer to a collection.",
+      "properties": {
+        "fileId": { "type": "string" },
+        "isPinned": { "type": "boolean" },
+        "layerId": { "type": "string" },
+        "order": { "type": "integer" },
+        "pageId": { "type": "string" },
+        "sha": { "type": "string" },
+        "useLatestCommit": { "type": "boolean" }
+      },
+      "required": ["fileId", "layerId", "pageId", "sha"]
+    },
+    "Comment": {
+      "type": "object",
+      "description": "A comment on a branch, commit, page, or layer.",
+      "properties": {
+        "id": { "type": "string" },
+        "annotation": { "$ref": "#/definitions/Annotation" },
+        "body": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" },
+        "editedAt": { "type": "string", "format": "date-time" },
+        "deletedAt": { "type": "string", "format": "date-time" },
+        "projectId": { "type": "string" },
+        "userId": { "type": "string" },
+        "branchId": { "type": "string" },
+        "commitSha": { "type": "string" },
+        "fileId": { "type": "string" },
+        "layerId": { "type": "string" },
+        "pageId": { "type": "string" },
+        "parentId": { "type": "string" },
+        "reviewId": { "type": "string" },
+        "reviewStatus": { "type": "string", "enum": ["REQUESTED", "REJECTED", "APPROVED"] },
+        "replyIds": { "type": "array", "items": { "type": "string" } }
+      },
+      "required": ["id", "body", "userId", "projectId"]
+    },
+    "NewComment": {
+      "type": "object",
+      "description": "Input object for creating a new comment.",
+      "properties": {
+        "annotation": { "$ref": "#/definitions/Annotation" },
+        "body": { "type": "string" }
+      },
+      "required": ["body"]
+    },
+    "Annotation": {
+      "type": "object",
+      "description": "A positional annotation on a layer for attaching a comment.",
+      "properties": {
+        "id": { "type": "string" },
+        "x": { "type": "number" },
+        "y": { "type": "number" },
+        "width": { "type": "number" },
+        "height": { "type": "number" },
+        "editing": { "type": "boolean" },
+        "scale": { "type": "number" },
+        "number": { "type": "integer" }
+      },
+      "required": ["x", "y", "width", "height"]
+    },
+    "Membership": {
+      "type": "object",
+      "description": "A user's membership in an organization or project.",
+      "properties": {
+        "createdAt": { "type": "string", "format": "date-time" },
+        "organizationId": { "type": "string" },
+        "projectId": { "type": "string" },
+        "role": { "type": "string", "enum": ["guest", "member", "owner"] },
+        "subscriptionRole": { "type": "string", "enum": ["viewer", "contributor"] },
+        "user": { "$ref": "#/definitions/User" },
+        "userId": { "type": "string" }
+      },
+      "required": ["organizationId", "userId", "role", "subscriptionRole"]
+    },
+    "Webhook": {
+      "type": "object",
+      "description": "A webhook configured to receive Abstract events.",
+      "properties": {
+        "id": { "type": "string" },
+        "active": { "type": "boolean" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "organizationId": { "type": "string" },
+        "errorCount": { "type": "integer" },
+        "events": { "type": "array", "items": { "type": "string" } },
+        "lastPushedAt": { "type": "string", "format": "date-time" },
+        "lastErrorAt": { "type": "string", "format": "date-time" },
+        "signatureKey": { "type": "string" },
+        "url": { "type": "string", "format": "uri" }
+      },
+      "required": ["id", "organizationId", "url"]
+    },
+    "NewWebhook": {
+      "type": "object",
+      "description": "Input object for creating a new webhook.",
+      "properties": {
+        "active": { "type": "boolean" },
+        "events": { "type": "array", "items": { "type": "string" } },
+        "url": { "type": "string", "format": "uri" }
+      },
+      "required": ["url", "events"]
+    },
+    "WebhookDelivery": {
+      "type": "object",
+      "description": "A single delivery record for a webhook event.",
+      "properties": {
+        "id": { "type": "string" },
+        "webhookId": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "event": { "type": "string" },
+        "organizationId": { "type": "string" },
+        "projectId": { "type": "string" },
+        "status": { "type": "string" },
+        "requestBody": { "type": "object" },
+        "requestHeaders": { "type": "object" },
+        "responseBody": { "type": "object" },
+        "responseHeaders": { "type": "object" },
+        "statusCode": { "type": "integer" }
+      },
+      "required": ["id", "webhookId", "event"]
+    },
+    "Asset": {
+      "type": "object",
+      "description": "An exportable asset generated from design layers.",
+      "properties": {
+        "fileId": { "type": "string" },
+        "fileURL": { "type": "string", "format": "uri" },
+        "formatName": { "type": "string" },
+        "id": { "type": "string" },
+        "layerId": { "type": "string" },
+        "layerName": { "type": "string" },
+        "namingScheme": { "type": "string" },
+        "nestedLayerId": { "type": "string" },
+        "projectId": { "type": "string" },
+        "scale": { "type": "number" },
+        "sha": { "type": "string" },
+        "url": { "type": "string", "format": "uri" }
+      },
+      "required": ["id", "projectId", "fileId", "layerId"]
+    },
+    "Section": {
+      "type": "object",
+      "description": "A section grouping projects within an organization.",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "organizationId": { "type": "string" }
+      },
+      "required": ["id", "name", "organizationId"]
+    },
+    "Star": {
+      "type": "object",
+      "description": "A starred project or section.",
+      "properties": {
+        "createdAt": { "type": "string", "format": "date-time" },
+        "projectId": { "type": "string" },
+        "sectionId": { "type": "string" },
+        "userId": { "type": "string" }
+      },
+      "required": ["userId"]
+    },
+    "Notification": {
+      "type": "object",
+      "description": "A user notification within the Abstract platform.",
+      "properties": {
+        "id": { "type": "string" },
+        "activityId": { "type": "string" },
+        "branchId": { "type": "string" },
+        "commentId": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "initiatingUser": { "$ref": "#/definitions/User" },
+        "initiatingUserId": { "type": "string" },
+        "messageType": { "type": "string" },
+        "organization": { "$ref": "#/definitions/Organization" },
+        "organizationId": { "type": "string" },
+        "project": { "$ref": "#/definitions/Project" },
+        "projectId": { "type": "string" },
+        "readAt": { "type": "string", "format": "date-time" },
+        "userId": { "type": "string" }
+      },
+      "required": ["id", "userId", "organizationId"]
+    }
+  }
+}
