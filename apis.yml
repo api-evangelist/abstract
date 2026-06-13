@@ -1,0 +1,80 @@
+aid: abstract
+name: Abstract
+description: Abstract is a design version control and collaboration platform that brings git-inspired branching, merging, and change history to design teams. It provides a REST API and JavaScript SDK for managing projects, branches, commits, files, collections, and design component libraries across teams, integrating with Sketch and other design tools.
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+url: https://raw.githubusercontent.com/api-evangelist/abstract/refs/heads/main/apis.yml
+created: '2026-06-13'
+modified: '2026-06-13'
+specificationVersion: '0.19'
+tags:
+  - Design
+  - Version Control
+  - Collaboration
+  - Sketch
+  - Design Systems
+
+apis:
+
+  - name: Abstract API
+    description: The Abstract REST API provides programmatic access to design projects, branches, commits, files, collections, and component libraries managed within the Abstract platform. Access is provided via the abstract-sdk JavaScript library which supports both HTTP API and CLI transports.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://developer.abstract.com
+    baseURL: https://api.goabstract.com
+    tags:
+      - Design
+      - Version Control
+      - Branches
+      - Projects
+      - Files
+      - Collections
+    properties:
+      - type: Documentation
+        url: https://developer.abstract.com
+      - type: Authentication
+        url: https://sdk.goabstract.com/docs/authentication/
+      - type: RateLimits
+        url: https://sdk.goabstract.com/docs/rate-limits/
+      - type: SDK
+        url: https://github.com/goabstract/abstract-sdk
+      - type: npm
+        url: https://www.npmjs.com/package/abstract-sdk
+
+common:
+
+  - type: Website
+    url: https://www.goabstract.com
+
+  - type: Documentation
+    url: https://developer.abstract.com
+
+  - type: GitHubOrg
+    url: https://github.com/goabstract
+
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/abstract-app
+
+  - type: Blog
+    url: https://www.goabstract.com/blog
+
+  - type: Pricing
+    url: https://www.goabstract.com/pricing
+
+  - type: StatusPage
+    url: https://status.goabstract.com
+
+  - type: X
+    url: https://twitter.com/goabstract
+
+  - type: Plans
+    url: plans/abstract-plans-pricing.yml
+
+  - type: RateLimits
+    url: rate-limits/abstract-rate-limits.yml
+
+  - type: FinOps
+    url: finops/abstract-finops.yml
+
+maintainers:
+
+  - FN: Kin Lane
+    email: kin@apievangelist.com

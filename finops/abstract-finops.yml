@@ -1,0 +1,47 @@
+name: Abstract FinOps
+description: Financial operations guidance for managing Abstract API and platform costs, covering contributor seat licensing, storage consumption, and integration tier selection.
+url: https://www.goabstract.com/pricing
+
+costDrivers:
+
+  - name: Contributor Seats
+    description: Costs scale with the number of contributors (editors) on the platform. Viewers are free and unlimited across all paid plans, so limiting edit access to active contributors reduces costs.
+    unit: per contributor per month
+    optimization: Audit contributor lists regularly and downgrade inactive contributors to viewer status.
+
+  - name: Storage (Branches/Pro Plan)
+    description: The Abstract Pro plan includes up to 50GB of storage for Sketch design files under version control. Enterprise plan removes the 50GB cap.
+    unit: GB
+    limit: 50 GB (Pro plan)
+    optimization: Archive completed projects and prune unused branches to stay within the 50GB storage limit and avoid upgrading to Enterprise solely for storage.
+
+  - name: Billing Period
+    description: Annual billing provides a meaningful discount versus monthly billing. Choosing annual contracts reduces per-seat costs.
+    monthlyVsAnnual:
+      notebooksPro:
+        annual: 29 USD per contributor per month
+        monthly: 32 USD per contributor per month
+        savings: ~9% with annual billing
+      abstractPro:
+        annual: 35 USD per contributor per month
+        monthly: 44 USD per contributor per month
+        savings: ~20% with annual billing
+    optimization: Commit to annual billing when team size is predictable to capture the discount.
+
+  - name: API Usage (Rate Limiting)
+    description: The Abstract API enforces 120 requests per minute per token. Exceeding this limit does not incur overage charges but will cause request failures. Using the CLI transport avoids rate limits for local automation tasks.
+    optimization: Use the CLI transport for high-volume local automation to avoid rate limit errors without additional cost.
+
+  - name: Plan Selection
+    description: Choosing the right product (Notebooks vs. Branches) and tier (Free, Pro, Enterprise) based on actual team needs prevents overpaying for unused capacity.
+    optimization:
+      - Start with Notebooks Free for small teams (up to 3 notebooks).
+      - Upgrade to Pro only when SSO, SAML, or advanced integrations are required.
+      - Evaluate Enterprise only when storage caps, custom legal terms, or dedicated support are genuine requirements.
+
+recommendations:
+  - Conduct a quarterly contributor audit to remove inactive seats.
+  - Default new team members to Viewer role until active contribution is confirmed.
+  - Use annual billing for teams with stable headcount to maximize per-seat savings.
+  - Leverage the Notebooks Free plan for non-critical projects to reduce billable notebook count.
+  - Monitor Sketch file storage consumption to avoid unexpected Enterprise upgrades driven solely by the 50GB Pro limit.

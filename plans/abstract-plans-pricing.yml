@@ -1,0 +1,75 @@
+name: Abstract Plans and Pricing
+description: Pricing plans for Abstract design version control and collaboration platform, covering both the Notebooks and Branches (version control) products.
+url: https://www.goabstract.com/pricing
+plans:
+
+  - name: Notebooks Free
+    description: Free tier for individuals and small teams to get started with collaborative design notebooks.
+    price: 0
+    currency: USD
+    period: month
+    features:
+      - Up to 3 active notebooks
+      - Unlimited viewers
+      - Basic integrations (Figma, Sketch, GitHub, Jira)
+      - Email support
+
+  - name: Notebooks Pro
+    description: Full-featured notebooks plan for growing design teams requiring unlimited notebooks and deep integrations.
+    price: 29
+    currency: USD
+    period: month
+    unit: per contributor (annual billing)
+    alternativePrice: 32
+    alternativePeriod: month (monthly billing)
+    features:
+      - Unlimited notebooks
+      - Focused reviews with tracking
+      - Deep integrations with design and software tools
+      - Project and team insights
+      - Fine-grained roles with SSO, SAML, and SCIM
+
+  - name: Notebooks Enterprise
+    description: Enterprise-grade notebooks plan with dedicated account management, custom workflows, and advanced org-wide insights.
+    price: 49
+    currency: USD
+    period: month
+    unit: per contributor (annual billing)
+    features:
+      - Everything in Notebooks Pro
+      - Dedicated account management
+      - Custom invoicing
+      - Custom notebook templates and workflows
+      - Automated review requests (coming soon)
+      - Advanced org-wide insights (coming soon)
+
+  - name: Abstract Pro (Branches)
+    description: Version control and file management plan for Sketch design files with unlimited viewers.
+    price: 35
+    currency: USD
+    period: month
+    unit: per contributor (annual billing)
+    alternativePrice: 44
+    alternativePeriod: month (monthly billing)
+    features:
+      - File management and version control
+      - Up to 50GB of storage
+      - Unlimited viewers
+      - Review requests
+      - Collections
+      - Inspect tool
+
+  - name: Abstract Enterprise (Branches)
+    description: Custom enterprise plan with no storage or seat caps, advanced security, and priority support.
+    price: custom
+    currency: USD
+    period: month
+    unit: per contributor (annual billing)
+    features:
+      - All Abstract Pro features
+      - No storage or seat caps
+      - Merge restrictions
+      - Branch reporting
+      - SSO and SAML with JIT provisioning
+      - Priority support
+      - Custom legal terms

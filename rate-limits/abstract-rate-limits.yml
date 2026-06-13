@@ -1,0 +1,28 @@
+name: Abstract API Rate Limits
+description: Rate limiting policies for the Abstract REST API accessed via the abstract-sdk JavaScript SDK.
+url: https://sdk.goabstract.com/docs/rate-limits/
+limits:
+
+  - name: API Transport Rate Limit
+    description: When using the SDK with the HTTP API transport, requests are subject to a flat rate limit of 120 requests per minute. Rate limits are enforced per token, meaning multiple clients sharing the same token collectively exhaust the same quota.
+    requests: 120
+    period: minute
+    scope: per-token
+    transport: api
+
+  - name: CLI Transport Rate Limit
+    description: When using the SDK with the CLI transport (via the Abstract desktop application), there are no API rate limits imposed. The CLI transport communicates locally and bypasses server-side rate limiting entirely.
+    requests: unlimited
+    period: N/A
+    scope: N/A
+    transport: cli
+
+errorHandling:
+  errorType: Abstract.RateLimitError
+  resetsAt: epoch timestamp (resetsAt property on error object)
+  recommendation: Catch the RateLimitError and schedule a retry using the resetsAt timestamp to determine the appropriate wait duration before resuming requests.
+
+notes:
+  - Rate limits are issued on a per-token basis, not per client IP or account.
+  - Multiple SDK clients configured with the same token share a single rate limit pool.
+  - The CLI transport can be used to avoid rate limits entirely when running in environments with the Abstract desktop application installed.
