@@ -104,5 +104,17 @@
       "readTime": "6 min",
       "description": "Netflix's Fonz Morris emphasizes the importance of early-stage design refinement rather than waiting for end-of-cycle adjustments in product iteration."
     }
-  ]
+  ],
+  "repo": "abstract",
+  "feeds": [
+    {
+      "source": "https://www.linkedin.com/company/abstract-app",
+      "feed_url": "https://www.linkedin.com/company/abstract-app",
+      "title": "",
+      "saved": 0,
+      "method": "none"
+    }
+  ],
+  "post_count": 0,
+  "fetched": "2026-06-14T20:42:17Z"
 }
