@@ -1,7 +1,7 @@
 aid: abstract
 name: Abstract
 description: Abstract is a design version control and collaboration platform that brings git-inspired branching, merging, and change history to design teams. It provides a REST API and JavaScript SDK for managing projects, branches, commits, files, collections, and design component libraries across teams, integrating with Sketch and other design tools.
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 url: https://raw.githubusercontent.com/api-evangelist/abstract/refs/heads/main/apis.yml
 created: '2026-06-13'
 modified: '2026-06-13'
@@ -17,7 +17,7 @@ apis:
 
   - name: Abstract API
     description: The Abstract REST API provides programmatic access to design projects, branches, commits, files, collections, and component libraries managed within the Abstract platform. Access is provided via the abstract-sdk JavaScript library which supports both HTTP API and CLI transports.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://developer.abstract.com
     baseURL: https://api.goabstract.com
     tags:
