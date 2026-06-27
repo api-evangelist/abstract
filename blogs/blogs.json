@@ -2,12 +2,20 @@
   "repo": "abstract",
   "feeds": [
     {
-      "source": "https://www.goabstract.com/blog",
+      "source": "https://www.goabstract.com/blog/rss.xml",
       "feed_url": "https://www.goabstract.com/blog/rss.xml",
-      "title": "Abstract Blog",
-      "saved": 0
+      "title": "",
+      "saved": 0,
+      "method": "feed"
+    },
+    {
+      "source": "https://www.linkedin.com/company/abstract-app",
+      "feed_url": "https://www.linkedin.com/company/abstract-app",
+      "title": "",
+      "saved": 0,
+      "method": "none"
     }
   ],
-  "fetched": "2026-06-21T17:00:00Z",
+  "fetched": "2026-06-27T12:03:07Z",
   "post_count": 0
 }
