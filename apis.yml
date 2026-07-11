@@ -41,6 +41,8 @@ apis:
 
 common:
 
+  - type: DomainSecurity
+    url: security/abstract-domain-security.yml
   - type: Website
     url: https://www.goabstract.com
 

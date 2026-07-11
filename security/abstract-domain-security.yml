@@ -1,0 +1,31 @@
+generated: '2026-07-11'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
+hosts:
+- host: www.goabstract.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Sep 23 23:48:08 2026 GMT
+  hsts: true
+  hsts_max_age: 31536000
+- host: developer.abstract.com
+  https: false
+- host: api.goabstract.com
+  https: true
+  tls_version: TLSv1.2
+  cert_expires: Feb 22 23:59:59 2027 GMT
+  hsts: true
+  hsts_max_age: 31536000
+domains:
+- domain: goabstract.com
+  dnssec: false
+  caa: []
+  spf: true
+  dmarc: true
+  dmarc_policy: reject
+- domain: abstract.com
+  dnssec: false
+  caa: []
+  spf: true
+  dmarc: true
+  dmarc_policy: quarantine
