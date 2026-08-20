@@ -36,6 +36,13 @@ apis:
       - Design
       - Version Control
       - Branches
+      - Project
+      - File
+      - Collection
+    tags_raw:
+      - Design
+      - Version Control
+      - Branches
       - Projects
       - Files
       - Collections
