@@ -2,10 +2,6 @@
   "repo": "abstract",
   "feeds": [
     {
-      "source": "https://www.goabstract.com/blog/rss.xml",
-      "error": "URLError"
-    },
-    {
       "source": "https://www.linkedin.com/company/abstract-app",
       "feed_url": "https://www.linkedin.com/company/abstract-app",
       "title": "",
@@ -13,6 +9,6 @@
       "method": "none"
     }
   ],
-  "fetched": "2026-08-15T12:22:01Z",
+  "fetched": "2026-08-22T20:20:02Z",
   "post_count": 50
 }
