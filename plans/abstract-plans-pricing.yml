@@ -77,3 +77,51 @@ plans:
       - SSO and SAML with JIT provisioning
       - Priority support
       - Custom legal terms
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - free
+  - negotiated
+  - subscription
+  units: []
+  plans:
+  - name: Notebooks Free
+    access: other
+    model: free
+    model_how: derived
+    units: []
+    periods:
+    - month
+  - name: Notebooks Pro
+    access: other
+    model: subscription
+    model_how: derived
+    units:
+    - other
+    periods:
+    - month
+  - name: Notebooks Enterprise
+    access: other
+    model: subscription
+    model_how: derived
+    units:
+    - other
+    periods:
+    - month
+  - name: Abstract Pro (Branches)
+    access: other
+    model: subscription
+    model_how: derived
+    units:
+    - other
+    periods:
+    - month
+  - name: Abstract Enterprise (Branches)
+    access: other
+    model: negotiated
+    model_how: derived
+    units:
+    - other
+    periods:
+    - month
