@@ -1,4 +1,4 @@
-# Abstract (abstract)
+# Abstract
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,62 +66,121 @@
 
 Abstract is a design version control and collaboration platform that brings git-inspired branching, merging, and change history to design teams. It provides a REST API and JavaScript SDK for managing projects, branches, commits, files, collections, and design component libraries across teams, integrating with Sketch and other design tools.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/abstract/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/abstract/refs/heads/main/apis.yml)
+**Areas:** Design · Version Control · Collaboration · Sketch · Design Systems · Developer Tools
 
-## Tags
+## Abstract on APIs.io
 
-- Design
-- Version Control
-- Collaboration
-- Sketch
-- Design Systems
+Everything profiled for Abstract is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/abstract/](https://apis.io/providers/abstract/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
+### APIs (1)
 
-- **Created:** 2026-06-13
-- **Modified:** 2026-06-13
+- [Abstract API](https://apis.io/apis/abstract/abstract-api/) — The Abstract REST API provides programmatic access to design projects, branches, commits, files, collections, and component libraries managed within the…
 
-## APIs
+### Published properties
 
-### Abstract API
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-The Abstract REST API provides programmatic access to design projects, branches, commits, files, collections, and component libraries managed within the Abstract platform. Access is provided via the abstract-sdk JavaScript library which supports both HTTP API and CLI transports.
+#### JSON Schema (1)
 
-- **Human URL:** [https://developer.abstract.com](https://developer.abstract.com)
-- **Base URL:** `https://api.goabstract.com`
+The data models the API reads and writes.
 
-#### Tags
+- [Abstract API Schemas](https://apis.io/schemas/abstract/abstract-api/)
 
-- Design
-- Version Control
-- Branches
-- Projects
-- Files
-- Collections
+#### JSON-LD (1)
 
-#### Properties
+Linked-data contexts for the provider's vocabulary.
 
-- [Documentation](https://developer.abstract.com)
-- [Authentication](https://sdk.goabstract.com/docs/authentication/)
-- [Rate Limits](https://sdk.goabstract.com/docs/rate-limits/)
-- [SDK](https://github.com/goabstract/abstract-sdk)
-- [npm](https://www.npmjs.com/package/abstract-sdk)
+- [Abstract Api Context](https://apis.io/jsonld/abstract/abstract-api/)
 
-## Common Properties
+#### Governance rules (1)
+
+Spectral rulesets for the provider's contracts.
+
+- [Abstract — jsonschema rules](https://apis.io/rules/abstract/abstract-jsonschema-spectral-rules/)
+
+#### Security (1)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Abstract Domain Security](https://apis.io/security/abstract/abstract-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Abstract Plans Pricing](https://apis.io/plans/abstract/abstract-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Abstract Rate Limits](https://apis.io/rate-limits/abstract/abstract-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Abstract Finops](https://apis.io/finops/abstract/abstract-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Website](https://www.goabstract.com)
 - [Documentation](https://developer.abstract.com)
-- [Git Hub Org](https://github.com/goabstract)
-- [LinkedIn](https://www.linkedin.com/company/abstract-app)
-- [Blog](https://www.goabstract.com/blog)
 - [Pricing](https://www.goabstract.com/pricing)
-- [Status Page](https://status.goabstract.com)
-- [X (Twitter)](https://twitter.com/goabstract)
-- [Plans](plans/abstract-plans-pricing.yml)
-- [Rate Limits](rate-limits/abstract-rate-limits.yml)
-- [Fin Ops](finops/abstract-finops.yml)
+- [Blog](https://www.goabstract.com/blog)
+- [Status](https://status.goabstract.com)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 19.5** — emerging · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 10.7 |
+| Contract governance | 9.8 |
+| Operational transparency | 18.4 |
+| Developer ergonomics | 19.0 |
+| Access clarity | 13.2 |
+
+**Agent readiness 5.0** — human-only
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | — |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 16.7** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/abstract/](https://apis.io/providers/abstract/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Abstract: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/abstract/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
